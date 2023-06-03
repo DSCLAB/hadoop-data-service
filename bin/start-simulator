@@ -1,0 +1,27 @@
+#!/bin/bash
+SOURCE="${BASH_SOURCE[0]}"
+BIN_DIR="$( dirname "$SOURCE" )"
+
+while [ -h "$SOURCE" ]
+do
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  BIN_DIR="$( cd -P "$( dirname "$SOURCE"  )" && pwd )"
+done
+
+
+BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+LIB_DIR="$(dirname "$BIN_DIR")"
+CONF_DIR=$LIB_DIR'/conf/'
+CLASSPATH=$( { hadoop classpath; } 2>&1 ):$( { hbase classpath; } 2>&1 ):$LIB_DIR'/lib/*:'
+
+SIMULATOR_PATH=$CONF_DIR/simulator-conf.txt
+XML_PATH=$CONF_DIR/yarn-dispatch.xml
+
+JAVA='java -cp'
+CLASS="com.dslab.drs.simulater.Main"
+JARS=$TMP_JARS
+
+exec $JAVA $CLASSPATH $CLASS $JARS $ARGS $XML_PATH $SIMULATOR_PATH 2>simulator.log
+
+#java -cp `hadoop classpath`:../lib/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/* com.dslab.drs.simulater.Main ../source/yarn-dispatch.xml ../source/workload.txt 2>simulator.log

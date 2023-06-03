@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+  <property>
+    <name>dispatch.HDS.access.address</name>
+    <value>http://HOST-ADDRESS:8000/dataservice/v1/access</value>
+    <description>HDS address to access file</description>
+  </property> 
+
+  <property>
+    <name>dispatch.HDS.list.address</name>
+    <value>http://HOST-ADDRESS:8000/dataservice/v1/list?from=</value>
+    <description>HDS address for list api</description>
+  </property> 
+
+  <property>
+    <name>drs.slaves</name>
+    <value>drs-01;drs-02;drs-03;drs-04;drs-05</value>
+    <description>All slave's node name</description>
+  </property>
+
+  <property>
+    <name>R_HOME</name>
+    <value>/usr/lib64/R</value>
+    <description>necessary for JRI execution</description>
+  </property> 
+
+  <property>
+    <name>LD_LIBRARY_PATH</name>
+    <value>/usr/lib64/R/lib:/usr/lib64/R/bin:/usr/java/jdk1.8.0_111/jre/lib/amd64/server</value>
+    <description>necessary for JRI execution, make sure the path contains libR.so,libjvm.so</description>
+  </property>
+
+  <property>
+    <name>JRI.library.path</name>
+    <value>/usr/lib64/R/library/rJava/jri</value>
+    <description>necessary for JRI execution</description>
+  </property>
+
+  <property>
+    <name>JRI.library.jar.path</name>
+    <value>/usr/lib64/R/library/rJava/jri/JRI.jar</value>
+    <description>necessary for JRI execution</description>
+  </property>
+
+  <property>
+    <name>dispatch.yarn.jar</name>
+    <value>hdrs-drs-1.0.10.jar</value>
+    <description></description>
+  </property> 
+
+  <property>
+    <name>dispatch.hdfs.share.account</name>
+    <value>hdfs://drs-00:8020/user/yarn</value>
+    <description></description>
+  </property> 
+
+
+  <property>
+    <name>yarn.resourcemanager.connect.max-wait.ms</name>
+    <value>900000</value>
+  </property>
+
+  <property>
+    <name>drs.hds.auth.token</name>
+    <value>sweatshopsdslab</value>
+    <description>sercurity token used by and operation associated with hds</description>
+  </property>
+
+
+  <property>
+    <name>drs.rm.config.location</name>
+    <value>/etc/hadoop/conf.cloudera.yarn/</value>
+    <description></description>
+  </property>
+
+  <!-- multi users -->
+
+  <property>
+    <name>drs.fair.queue.list</name>
+    <value>DRS.DRS-A,DRS.DRS-B</value>
+  </property>
+
+  <property>
+    <name>drs.fair.queue.wait.size</name>
+    <value>3</value>
+  </property>
+
+
+  <property>
+    <name>zookeeper.quorum</name>
+    <value>drs-05,drs-03,drs-02</value>
+  </property>
+
+
+</configuration>

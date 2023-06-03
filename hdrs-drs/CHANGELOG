@@ -1,0 +1,205 @@
+Release 1.0.0 - 03/01/2016
+	BUG FIXES
+		DRS-0004 Parameter copyto should be able to handle wildcard
+		DRS-0006 JRI client will continue while HDS return 500 internal server
+	TASKS
+		DRS-0001 Add RESTful API to access DRS service
+	IMPROVEMENT
+		DRS-0002 Add property for controling extract zip file before R execute
+		DRS-0003 The HDSclient component to handle HDS access
+		DRS-0005 All Parameters support HDS address as input
+
+Release 1.0.1 - 03/14/2016
+	BUG FIXES
+		DRS-0008 Temp files on HDSF should clear after the job done
+		DRS-0009 Service should work fine while there are no R console files ouput
+		DRS-0010 Add drs.rm.config.location parameter to fix DRS client connecting to RM
+	TASKS
+		DRS-0007 DRS on HDS coprocessor version 
+	IMPROVEMENT
+		DRS-0011 Detect Copyto parameter ends with / or not and fix it
+		DRS-0012 Add size unit of response JSON size
+		DRS-0013 Add clearly statement to indicate job result
+		DRS-0014 Update the ablility of dispatch user resources to container side
+
+Release 1.0.2 - 03/30/2016		
+	BUG FIXES
+		DRS-0016 Sending run request to other node in cluster cause file not found execption
+		DRS-0017 Resource file in dispatch.resource not exist cause the following resource files transmittion fail
+		DRS-0018 JRI client upload computing result occur zero size file remaining at source side when no redirect
+	TASKS
+		DRS-0015 DRS collect exception and return JSON reponse to RESTful user
+	IMPROVEMENT
+		DRS-0019 Skip non existing file on data file and continue the job
+		DRS-0020 Detect Restful run api parameter numbers and throw exception to user 
+		DRS-0021 Detect if parameter file not exist at the source side and throw exception to user 
+		DRS-0022 Refactoring JRI client side
+		DRS-0023 Improve communication of container and AM side by object represent container status
+
+Release 1.0.3 - 04/12/2016			
+	BUG FIXES
+		DRS-0026 Fixed DRS POST redirect issue  by using chunkStreamMode
+		DRS-0027 Fixed access dispatch resource faile 
+	TASKS
+		DRS-0024 DRS provide multiple containers in a single node 
+		DRS-0025 DRS handle fail during POST and roll back part of upload files
+	IMPROVEMENT
+		DRS-0028 Now every parameter associate with file will correctedly represent the server which user send request
+
+Release 1.0.4 - 04/19/2016		
+	BUG FIXES
+		DRS-0030 Fixed counting Available memory error causing AM stuck permently
+	TASKS
+		DRS-0029 DRS locality schedule mode
+	IMPROVEMENT
+		DRS-0031 DRS scheduler refactor for other schedule mode
+
+Release 1.0.5 - 04/26/2016		
+	BUG FIXES
+		DRS-0033 Fixed locality schedule mode encounter error while dealing with FQDN
+	TASKS
+		DRS-0032 DRS support R UDF 
+	IMPROVEMENT
+		DRS-0034 DRS JRI executor refactor for UDF stages
+	
+Release 1.0.6 - 05/13/2016		
+	BUG FIXES
+		DRS-0036 Fixed UDF parameter prefix problem
+	TASKS
+		DRS-0035 DRS support kill application 
+	IMPROVEMENT
+
+Release 1.0.7 - 05/24/2016		
+	BUG FIXES
+		DRS-0039 Fixed R enviroment memory not release between tasks
+		DRS-0040 Fixed hds post statement logic error which cause client side not showing the hds response message
+	TASKS
+		DRS-0037 DRS support killdrs,watchdrs,run with async RESTful API
+		DRS-0038 DRS dynamically release unused container resource while the application is neer ending
+	IMPROVEMENT
+
+Release 1.0.8 - 06/02/2016		
+	BUG FIXES
+		DRS-0043 watchdrs update initialize state when am server is not ready yet
+	TASKS
+		DRS-0041 DRS update killdrs,watchdrs for history RESTful API
+		DRS-0042 DRS performance measure and testing
+	IMPROVEMENT
+		DRS-0043 DRS will retry by loading to get another hds server while task is full
+
+Release 1.0.9 - 06/07/2016
+	BUG FIXES
+		DRS-0044 killdrs response for no applicationID specified fixed
+		DRS-0045 DRSclient will periodically check RM for application state
+		DRS-0046 Data specified directory bug in smb fixed
+	TASKS
+	IMPROVEMENT
+
+Release 1.1.0 - 06/13/2016
+	BUG FIXES
+		DRS-0047 Fixed multiple application run at some time cause drs.xml access failed
+		DRS-0048 Fixed initialize state will be view as abort 
+	TASKS
+	IMPROVEMENT
+
+Release 1.1.1 - 06/16/2016
+	BUG FIXES
+		DRS-0049 Fixed bug during construct error message while parameter files download fail
+	TASKS
+	IMPROVEMENT
+
+Release 1.1.2 - 06/21/2016
+	BUG FIXES
+	    DRS-0051 fix drs client access parameter files fail message not clear problem
+		DRS-0052 fix auth exception not display clear when no auth is specified
+	TASKS
+	IMPROVEMENT
+		DRS-0050 add hds auth token to parameter
+
+Release 1.1.3 - 06/28/2016
+	BUG FIXES
+	    DRS-0054 fix drs doesn't throw properly exception when parameter not specify during hds stand-alone mode
+	TASKS
+		DRS-0055 support hds stand-alone mode
+	IMPROVEMENT
+
+Release 1.1.4 - 12/15/2016
+	BUG FIXES
+	TASKS
+	IMPROVEMENT
+		DRS-0056 support multi output path for R task.
+
+Release 1.1.5 - 1/10/2017
+	BUG FIXES
+		DRS-0058 return error message when input number didn't equal between codeout & copyto.
+		DRS-0059 return error message when input file has no available url.
+	TASKS
+		DRS-0060 DRS will record phase & resource log to dblog.
+		DRS-0061 Changed container request policy, allow user to ask for fixed number containers.
+	IMPROVEMENT
+		DRS-0057 show error location in R script.
+
+Release 1.2 - 3/11/2017
+	TASKS
+		DRS-0062 Add drs simulator?Åmonitor tool
+		DRS-0063 modify showing the error of consoleTo and copyTo when it is empty String.
+		DRS-0064 change dependency hds.dblog to hdrs.dblog.
+	Refactor
+		Refactoring-0001 remove HdsClient global variable?Åchange R output files function.
+		Refactoring-0002 extract method in SocketServer and do somewhere refactor.
+		Refactoring-0003 refactor socketServer and build new package drs.socket to deal with. 
+		Refactoring-0004 use DrsConfiguration's static variable on DRSClient.java
+
+-> Merge HDS as hdrs-1.0.0 - 3/31/2017
+
+Release 1.0.0 - 3/31/2017
+	TASKS
+		DRS-0065 Add drs.log.level configuration
+		DRS-0066 modify the action of scheduler fileinfo list to a additional thread.
+	Refactor
+		Refactoring-0005 replace slf4j dependency with apache common log4j
+		Refactoring-0006 replace DRSConstant with DrsConfiguration
+		Refactoring-0007 all schedulers extends abstractScheduler
+		Refactoring-0008 refactor some redundant code.
+
+Release 1.0.5 - 5/25/2017
+	TASKS
+		DRS-0066 modify the action of scheduler fileinfo list to a additional thread.
+		DRS-0067 Add xyf's sample code of RPC.
+		DRS-0068 Make DRS log only print itself log message rather than phoenix or hadoop.
+		DRS-0069 Remove unused depency "jaxen".
+		DRS-0070 Make DRS support AM Preemption Policy.
+		DRS-0071 Debug update serviceStatus synchronized issue and add new class HDSRunDRSApps.
+		DRS-0072 Debug YARN jobs running will hang when RM shutdown issue and add new class RunWatchDrs.
+		DRS-0073 Make DRS support fair schedule queue. and Change cdh version to cdh 5.10.0
+		DRS-0074 Make DRS support AM Preemption Policy.(add capacity scheduler)
+		DRS-0075 fix DRS-0073's not exist queue name fault.
+
+Release 1.0.5(second time) - 9/06/2017
+		DRS-0076 Make DRS document readable?ÅMake DRS queue error message more readable.
+		DRS-0077 Make DRSClient close zookeeper connection.
+		DRS-0078 Fix early end bug(523 files but only run 200 files)
+		DRS-0079 Fix arrayList concurrent bug and delete redundent log.
+		DRS-0080 Fix ServiceStatus didn't implement clonable.
+		DRS-0081 Fix DRS-0078 bug.
+
+Release 1.0.6
+		DRS-0082 Remove some system.out message.
+		DRS-0083 Fix batch list concurrent problem and add response log.
+		DRS-0084 Fix runningContainerID's concurrent problem in AM.
+
+Release 1.0.7
+		DRS-0084 Fix runningContainerID's concurrent problem in AM.
+
+Release 1.0.8
+		DRS-0085 Add debug log for DRSClient(For DRS Response too fast issue)
+		DRS-0086 New future - release idle container before AM closed.
+		DRS-0086 Bug fix - remove developing components.
+		DRS-0087 Bug fix - container state still running when job finished.
+		DRS-0088 Bug fix - Ask for container encounter racing condition.
+		
+Release 1.0.9		
+		DRS-0024 New future - manage containers in different memory size.
+		
+Release 1.0.10	
+		DRS-0025 New future - dynamically adjust task into appropriate container.

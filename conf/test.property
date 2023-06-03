@@ -1,0 +1,41 @@
+##core property , userNum for maxNum of thread , frequency (4)
+isCreateLocalFile=true
+thread.Num=10
+request.Num=100
+log.path=/tmp/log/
+socket.TimeOut=60000
+##requests' frequency(ms) distribution setting (5)
+frequency.Dist=zipf
+frequency.Upper=33
+frequency.Lower=1
+frequency.Zipf.Exponent=1.333
+frequency.Normal.SD=10.0
+##concurrent user number distribution setting (5)
+concurrentThreadNum.Dist=normal
+concurrentThreadNum.Upper=10
+concurrentThreadNum.Lower=1
+concurrentThreadNum.Zipf.Exponent=2
+concurrentThreadNum.Normal.SD=5.0
+##users' request number distribution setting (5)
+threadRequestNum.Dist=uniform
+threadRequestNum.Upper=50
+threadRequestNum.Lower=1
+threadRequestNum.Zipf.Exponent=1.11
+threadRequestNum.Normal.SD=10.0
+##create file need ,fileSize(KB) distribution setting (6)
+localFile.Path=/tmp/source/
+localFile.fileSize.Upper=100
+localFile.fileSize.Lower=1
+localFile.fileSize.Dist=uniform
+localFile.fileSize.Zipf.Exponent=2
+localFile.fileSize.Normal.SD=10.0
+##create request need, source and destination distribution setting (9)
+access=http://192.168.103.94:8000/dataservice/v1/access
+source=local:///tmp/source
+destination=file:///tmp/dest
+source.Dist=uniform
+destination.Dist=uniform
+source.Zipf.Exponent=2
+source.Normal.SD=10.0
+destination.Zipf.Exponent=2
+destination.Normal.SD=10.0

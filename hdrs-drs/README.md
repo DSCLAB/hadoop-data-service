@@ -1,0 +1,1 @@
+Distributed R Services (簡稱DRS)提供RESTful APIs讓使用者遞交要分散運算的R與資料

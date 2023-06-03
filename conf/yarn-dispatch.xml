@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+<property>
+<name>dispatch.HDS.access.address</name>
+<value>http://HOST-ADDRESS:8000/dataservice/v1/access</value>
+<description>HDS address to access file</description>
+</property> 
+
+<property>
+<name>dispatch.HDS.list.address</name>
+<value>http://HOST-ADDRESS:8000/dataservice/v1/list?from=</value>
+<description>HDS address for list api</description>
+</property> 
+
+<property>
+<name>application.launch.container.number</name>
+<value>60</value>
+<description></description>
+</property>
+
+<property>
+<name>container.memory.mb</name>
+<value>1024</value>
+<description></description>
+</property> 
+
+<property>
+<name>container.cpu.vcores</name>
+<value>1</value>
+<description></description>
+</property>
+
+<property>
+<name>drs.jvm.heapsize.ratio</name>
+<value>0.5</value>
+<description></description>
+</property> 
+
+<property>
+<name>drs.slaves</name>
+<value>drs-01;drs-02;drs-03;drs-04;drs-05</value>
+<description>All slave's node name</description>
+</property>
+
+<property>
+<name>R_HOME</name>
+<value>/usr/lib64/R</value>
+<description>necessary for JRI execution</description>
+</property> 
+
+<property>
+<name>LD_LIBRARY_PATH</name>
+<value>/usr/lib64/R/lib:/usr/lib64/R/bin:/usr/java/jdk1.8.0_111/jre/lib/amd64/server</value>
+<description>necessary for JRI execution, make sure the path contains libR.so,libjvm.so</description>
+</property>
+
+<property>
+<name>JRI.library.path</name>
+<value>/usr/lib64/R/library/rJava/jri</value>
+<description>necessary for JRI execution</description>
+</property>
+
+<property>
+<name>JRI.library.jar.path</name>
+<value>/usr/lib64/R/library/rJava/jri/JRI.jar</value>
+<description>necessary for JRI execution</description>
+</property>
+
+<property>
+<name>dispatch.yarn.jar</name>
+<value>hdrs-drs-1.0.10.jar</value>
+<description></description>
+</property> 
+
+<property>
+<name>application.master.memory</name>
+<value>1024</value>
+<description></description>
+</property> 
+
+<property>
+<name>dispatch.hdfs.share.account</name>
+<value>hdfs://drs-00:8020/user/yarn</value>
+<description></description>
+</property> 
+
+<property>
+<name>container.max.suspend.time.sec</name>
+<value>3600</value>
+<description></description>
+</property>
+
+<property>
+<name>drs.scheduler.batch.size</name>
+<value>100</value>
+<description></description>
+</property>
+
+<property>
+<name>container.max.retry.times</name>
+<value>10</value>
+<description></description>
+</property>
+
+<property>
+<name>container.task.retry.times</name>
+<value>2</value>
+<description></description>
+</property>
+
+<property>
+<name>yarn.resourcemanager.connect.max-wait.ms</name>
+<value>900000</value>
+</property>
+
+<property>
+<name>drs.hds.auth.token</name>
+<value>sweatshopsdslab</value>
+<description>sercurity token used by and operation associated with hds</description>
+</property>
+
+
+<property>
+<name>drs.rm.config.location</name>
+<value>/etc/hadoop/conf.cloudera.yarn/</value>
+<description></description>
+</property>
+
+<property>
+<name>dispatch.scheduler</name>
+<value>locality</value>
+<description>currently has default and locality scheduler dispatch tasks</description>
+</property>
+
+<property>
+<name>dispatch.LocalityScheduler.threshold</name>
+<value>10000</value>
+<description>Threshold size of file that will activate locality schduling (Unit: Byte)</description>
+</property>
+
+<property>
+<name>dispatch.LocalityScheduler.timeout</name>
+<value>60</value>
+<description>Limit Time of skip task due to locality schedule (Unit: second)</description>
+</property>
+
+<property>
+<name>dispatch.locality.ratio</name>
+<value>0.3</value>
+<description>Ratio of file that will pass locality schedule</description>
+</property>
+
+
+<property>
+<name>drs.UDF.dir</name>
+<value>/user/hbase</value>
+<description>Indicate where to store UDF R scripts, make sure that the directory has user:hbase permission;Please note that t is HDFS directory path</description>
+</property>
+
+<property>
+<name>drs.UDF.execute.BeforeCode</name>
+<!--<value></value>-->
+<!--<value>UDF_beforecode.R</value>-->
+<description>Currently has BeforeCode,AfterCode 2 stages for UDF to exectue</description>
+</property>
+
+<property>
+<name>drs.UDF.execute.AfterCode</name>
+<!--<value></value>-->
+<!--<value>UDF_aftercode.R</value>-->
+<description>Currently has BeforeCode,AfterCode 2 stages for UDF to exectue</description>
+</property>
+
+<property>
+<name>dispatch.script.environment.value</name>
+<value>DBuser:admin;DBpassword:password</value>
+<description>R variables name for user specify</description>
+</property> 
+
+<property>
+<name>dispatch.script.input.path</name>
+<value>DRS_input_file_full_path</value>
+<description>R variable name of input file path </description>
+</property> 
+
+<property>
+<name>dispatch.script.output.path</name>
+<value>DRS_output_dir_full_path</value>
+<description>R variable name of output path</description>
+</property> 
+
+<property>
+<name>dispatch.script.output.path.list</name>
+<value>DRS_output_dir_list</value>
+<description>R variable name of output path list</description>
+</property>
+
+<property>
+<name>dispatch.node.script.log</name>
+<value>ErrorLogs</value>
+<description>directory to save error message from R script</description>
+</property> 
+
+<property>
+<name>dispatch.node.files</name>
+<value>HDS_Files</value>
+<description>directory to save files download from HDS</description>
+</property> 
+
+<property>
+<name>dispatch.node.contents</name>
+<value>all_contents</value>
+<description>directory to save unzip files</description>
+</property> 
+
+<property>
+<name>dispatch.node.output</name>
+<value>Output</value>
+<description>directory to save output from R script</description>
+</property> 
+
+<property>
+<name>dispatch.node.console</name>
+<value>Console</value>
+<description>directory to save Console record from R script</description>
+</property> 
+
+<property>
+<name>dispatch.node.zip.extract.enable</name>
+<value>false</value>
+<description>extract zip file before execute R script</description>
+</property> 
+
+<property>
+<name>hds.logger.enable</name>
+<value>true</value>
+<description></description>
+</property>
+
+<property>
+  <name>hds.logger.jdbc.db</name>
+  <value>phoenix</value>
+</property>
+
+<property>
+    <name>hds.logger.jdbc.url</name>
+    <value>jdbc:phoenix:drs-02:2181</value>
+</property>
+<property>
+    <name>hds.logger.jdbc.driver</name>
+    <value>org.apache.phoenix.jdbc.PhoenixDriver</value>
+</property>
+
+<property>
+    <name>hds.logger.queue.size</name>
+    <value>10000</value>
+</property>
+
+
+<property>
+<name>drs.log.level</name>
+<value>debug</value>
+</property> 
+
+<!-- multi users -->
+
+<property>
+<name>drs.fair.queue.list</name>
+<value>DRS.DRS-A,DRS.DRS-B,DRS.DRS-C,DRS.DRS-D,DRS.DRS-E</value>
+</property>
+
+<property>
+<name>drs.fair.queue.wait.size</name>
+<value>10</value>
+</property>
+
+<property>
+<name>zookeeper.quorum</name>
+<value>drs-05,drs-03,drs-02</value>
+</property>
+
+<property>
+<name>drs.release.idle.container.enable</name>
+<value>true</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval-count</name>
+<value>3</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval.minimum.memory-mb</name>
+<value>512</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval.increment.multiple</name>
+<value>2</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval.boundary</name>
+<value>200000000,200000001</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval.container-count.list</name>
+<value>10,1,1</value>
+</property>
+
+<property>
+<name>drs.containermanager.interval.resize.enable</name>
+<value>true</value>
+</property>
+
+
+
+</configuration>

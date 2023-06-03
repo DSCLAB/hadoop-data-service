@@ -1,0 +1,57 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+BIN_DIR="$( dirname "$SOURCE" )"
+while [ -h "$SOURCE" ]
+do
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+  BIN_DIR="$( cd -P "$( dirname "$SOURCE"  )" && pwd )"
+done
+BIN_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+LIB_DIR="$(dirname "$BIN_DIR")"
+CLASS=''
+CLASSPATH=$( { hadoop classpath; } 2>&1 ):$( { hbase classpath; } 2>&1 ):$LIB_DIR'/lib/*'
+
+# log4j Configuration
+LOG4J=-Dlog4j.configuration=file:$LIB_DIR'/conf/log4j.properties'
+
+# jcifs Configuration
+JCIFS="-Djcifs.properties="$LIB_DIR'/conf/jcifs.prp'
+
+# HDS configuration
+HDS="-Dhds.configuration="$LIB_DIR'/conf/hds.xml'
+
+# JMX Configuration
+# notice that if you want to cross the firewall, you need to open both jmx &
+# rmi port and set their public ip.
+# JMX="-Dcom.sun.management.jmxremote \
+#      -Dcom.sun.management.jmxremote.authenticate=false \
+#      -Dcom.sun.management.jmxremote.ssl=false \
+#      -Dcom.sun.management.jmxremote.local.only=false \
+#      -Dcom.sun.management.jmxremote.port=10103 \
+#      -Dcom.sun.management.jmxremote.rmi.port=10106"
+#      -Dcom.sun.management.jmxremote.host=
+#      -Djava.rmi.server.hostname=
+
+JAVA='java -cp'
+
+if [ "$1" == "run" ]; then
+	CLASS="umc.cdc.hds.httpserver.HdsHttpServer"
+else
+	echo "Usage: hds <action> [args]"
+	echo "Action: "
+	echo "  run		Executes the hadoop data service."
+	exit 1
+fi
+
+shift 1
+
+i=0
+while [ -n "$1" ]
+do
+	ARGS=$ARGS" "$1
+	i=$(($i+1))
+	shift
+done
+exec $JAVA $CLASSPATH $LOG4J $JCIFS $HDS $CLASS $ARGS

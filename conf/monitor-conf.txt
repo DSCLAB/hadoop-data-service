@@ -1,0 +1,8 @@
+log.level=debug
+hds.host=192.168.103.94
+resource.manager.http.address=drs-00:8088
+hds.logger.jdbc.db=phoenix
+hds.logger.jdbc.url=jdbc:phoenix:drs-02:2181
+hds.logger.jdbc.driver=org.apache.phoenix.jdbc.PhoenixDriver
+
+
